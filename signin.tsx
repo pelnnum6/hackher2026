@@ -24,24 +24,28 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
 
     useEffect(() => {
         if (response?.type === 'success') {
-            const { authentication } = response;
-            if (authentication) {
-                fetchUserInfo(authentication.accessToken);
-            }
+            const { id_token } = response.params;
+            const credential = GoogleAuthProvider.credential(id_token);
+            signInWithCredential(auth, credential).then((userCredential) => {
+                const user = userCredential.user;
+                const token = response.authentication?.accessToken;
+                navigation.navigate('ExEmail', { user, token });
+            });
         }
     }, [response]);
 
-    const fetchUserInfo = async (token: string) => {
-        const res = await fetch('https://www.googleapis.com/userinfo/v2/me', {
-            headers: { Authorization: `Bearer ${token}` },
-        });
+    // const fetchUserInfo = async (token: string) => {
+    //     const res = await fetch('https://www.googleapis.com/userinfo/v2/me', {
+    //         headers: { Authorization: `Bearer ${token}` },
+    //     });
 
-        const user = await res.json();
-        console.log(user);
+    //     const user = await res.json();
+    //     console.log(user);
 
-        navigation.navigate('ExEmail', { user, token });
-    };
+    //     navigation.navigate('ExEmail', { user, token });
+    // };
 
+    //this part is just basic styling for now
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <Text>Breakup Security Kit</Text>
