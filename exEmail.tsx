@@ -7,7 +7,7 @@ export default function ExEmailScreen({ route, navigation }: { route: any, navig
 
     const handleContinue = () => {
         if (!exEmail) return;
-        navigation.navigate('Scan', { user, token, exEmail });
+        navigation.navigate('riskDashboard', { user, token, exEmail });
     };
 
     return (
