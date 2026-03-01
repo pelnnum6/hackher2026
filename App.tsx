@@ -3,11 +3,13 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import React, { useState } from 'react';
 import ResourcesScreen from './ResourcesScreen';
 import Ques from './Ques';
+import Quiz from './page1/quiz';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('Chapters');
 
   return (
+    
     <View style={styles.container}>
       {/* Header with Tab Navigation */}
       <View style={styles.header}>
@@ -30,6 +32,10 @@ export default function App() {
             </Text>
           </Pressable>
         </View>
+            <View style={{ flex: 1, paddingTop: 50 }}>
+      <Quiz />
+    </View>
+  
       </View>
 
       {/* Content Area */}
@@ -87,3 +93,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+
