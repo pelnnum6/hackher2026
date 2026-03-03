@@ -58,7 +58,7 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
     });
     const [request, response, promptAsync] = Google.useAuthRequest({
         webClientId: WEB_CLIENT_ID,
-        redirectUri: 'http://localhost:8081/',
+        redirectUri: 'https://unlink.netlify.app/',
         scopes: [
             'profile',
             'email',
