@@ -58,7 +58,7 @@ export default function SignInScreen({ navigation }: { navigation: any }) {
     });
     const [request, response, promptAsync] = Google.useAuthRequest({
         webClientId: WEB_CLIENT_ID,
-        redirectUri: 'https://hackherunlink.netlify.app/',
+        redirectUri: 'https://unlink7.netlify.app/',
         scopes: [
             'profile',
             'email',
